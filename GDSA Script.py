@@ -1,23 +1,28 @@
 # PROGRAMA SIFT
-
 import cv2
 import numpy as np
 
-img=cv2.imread('wifi.jpg') # Llegim l'imatge que esta en el mateix directori i la posem a la variable img
+img=cv2.imread('wifi.jpg', 0)# Llegim l'imatge que esta en el mateix directori i la posem a la variable img
 
-sift=cv2.xfeatures2d.SIFT_create() #inicialitzem el sift.
-kp,des= sift.detectAndCompute(img,None) # trobem els keypoints i els descriptors
+sift= cv2.xfeatures2d.SIFT_create(400)
 
-cv2.drawKeypoints(img,kp,img,None,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)  # Dibuixem els keypoints a la img i la seva orientació
+kp,des= sift.detectAndCompute(img, None) # trobem els keypoints i els descriptors
 
-"""cv2.namedWindow('imatge', cv2.WINDOW_NORMAL)  # mostrem l'imatge
-cv2.imshow('imatge',img1)
+# Dibuixem els keypoints a la img i la seva orientació
+
+img1=cv2.drawKeypoints(img, kp, None, (255,0,0),4)
+
+# mostrem l'imatge
+
+cv2.namedWindow('imatg', cv2.WINDOW_NORMAL)
+cv2.imshow('imatg', img1)
 cv2.waitKey(0)
-cv2.destroyAllWindows()"""
+cv2.destroyAllWindows()
+"""
 
 #Match amb unaltre foto
 
-img2=cv2.imread('wifi2.jpg') # Llegim l'imatge amb la que farem match
+img2=cv2.imread('escola_enginyeria_150.jpg') # Llegim l'imatge amb la que farem match
 
 kp2,des2= sift.detectAndCompute(img2,None) #Busquem els keypoints i els descriptors de la segona imatge
 
@@ -34,3 +39,4 @@ cv2.namedWindow('imatge', cv2.WINDOW_NORMAL)  # mostrem l'imatge
 cv2.imshow('imatge',img3)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+"""
