@@ -9,7 +9,7 @@ surf =  cv2.xfeatures2d.SURF_create(400) # Creem un objecte SURF. El valor de 40
 
 kp,des=surf.detectAndCompute(img,None) # trobem els keypoints i els descriptors
 
-img2=cv2.drawKeypoints(img,kp,None,(255,0,0),4) # Dibuixem els keypoints a la img2
+img2=cv2.drawKeypoints(img,kp,None,(0,0,255),4) # Dibuixem els keypoints a la img2
 
 cv2.namedWindow('imatge', cv2.WINDOW_NORMAL)
 cv2.imshow('imatge',img2) # mostrem l'imatge
