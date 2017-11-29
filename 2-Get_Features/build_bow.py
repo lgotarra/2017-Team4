@@ -24,7 +24,7 @@ def build_bow(assignments, n):
 
     return descriptor
 
-# Comprovem que funciona
+"""# Comprovem que funciona
 descriptor1 = get_local_features("TerrassaBuildings900/train/images/aaeoeolbth.jpg")
 codebook = train_codebook(5, descriptor1)
 descriptor2 = get_local_features("TerrassaBuildings900/val/images/aalfirydrf.jpg")
@@ -33,4 +33,4 @@ assig = get_assignments(codebook, descriptor2)
 #Crea un vector ordenat amb els descriptors que equival a cada regió (k=5)
 asdf= build_bow(assig,50)
 print asdf
-print ("Numero de regiones diferentes: " + str(len(asdf))) 
+print ("Numero de regiones diferentes: " + str(len(asdf))) """

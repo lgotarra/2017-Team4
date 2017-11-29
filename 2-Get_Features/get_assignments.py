@@ -16,7 +16,7 @@ def get_assignments(codebook, descriptors):
     assignments= codebook.predict(descriptors)
     return assignments
 
-
+"""
 if __name__== "__main__":
 
     descriptor1 = get_local_features("TerrassaBuildings900/train/images/aaeoeolbth.jpg")
@@ -25,6 +25,6 @@ if __name__== "__main__":
     assig = get_assignments(codebook, descriptor2)
 
     print(assig)
-    print "Longuitud del assignments= " + str(len(assig))
+    print "Longuitud del assignments= " + str(len(assig))"""
     
 

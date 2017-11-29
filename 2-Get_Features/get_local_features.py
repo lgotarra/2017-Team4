@@ -9,11 +9,11 @@ sys.path.insert(0,'/home/oscarlinux/Escritorio/UPC/Q5/GDSA/Projecte/')
 def get_local_features(imatge):
     
     # Altres possibles mètodes serien SURF o ORB, fins i tot el FASTSIFT.
-    img = cv2.imread(imatge)
+    img=cv2.imread(imatge)
     sift = cv2.SIFT()
     kp, des =sift.detectAndCompute(img, None) #kp= número de punts d'interes -- des= descriptors
     #kp, des = orb.detectAndCompute(small,None) #kp= número de punts d'interes -- des= descriptors
-    print("S'han creat: " + str(len(des)) + " descriptors per l'imatge " + "\"" + imatge + "\"" + " amb "  + str(len(des[4])) + " Keypoints per descriptor.")
+    print("S'han creat: " + str(len(des)) + " descriptors per l'imatge " + "\"" + imatge+ "\"" + " amb "  + str(len(des[4])) + " Keypoints per descriptor.")
     return des
 
 if __name__ == "__main__":
