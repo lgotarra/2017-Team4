@@ -3,7 +3,7 @@ import os, time
 import numpy as np
 import pickle
 import cv2
-from sklearn.preprocessing import normalize, StandardScale
+from sklearn.preprocessing import normalize, StandardScaler
 from sklearn.decomposition import PCA
 def get_assignments(km,descriptors):
 
