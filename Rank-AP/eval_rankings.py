@@ -1,4 +1,5 @@
-import os, sys
+# -*- coding: utf-8 -*-
+import os
 import pandas as pd
 import numpy as np
 from get_params import get_params
@@ -8,6 +9,7 @@ import cv2
 def display(params,query_id,ranking,relnotrel):
 
     ''' Display the first elements of the ranking '''
+
 
     # Read query image
     query_im =  cv2.imread(os.path.join(params['root'],params['database'],params['split'], 'images',query_id.split('.')[0] + '.jpg'))
@@ -45,6 +47,8 @@ def display(params,query_id,ranking,relnotrel):
         # Switch to RGB to display with matplotlib
         im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
 
+        # Paint the boundaries with the ground truth
+
         # If it was correctly selected
         if relnotrel[i] == 1:
             # Put green contour
@@ -67,10 +71,10 @@ def display(params,query_id,ranking,relnotrel):
 def read_annotation(params):
 
     # Get true annotations
-    # annotation_val = pd.read_csv(os.path.join(params['root'],params['database'],params['split'],'annotation.txt'), sep='\t', header = 0)
+    annotation_val = pd.read_csv(os.path.join(params['root'],params['database'],params['split'],'annotation.txt'), sep='\t', header = 0)
     annotation_train = pd.read_csv(os.path.join(params['root'],params['database'],'train','annotation.txt'), sep='\t', header = 0)
 
-    return annotation_train
+    return annotation_val,annotation_train
 
 def get_hitandmiss(ranking,query_class,annotation_train):
 
@@ -232,12 +236,12 @@ def single_eval(params,query_id):
 if __name__ == "__main__":
 
     params = get_params()
-
+    params['descriptor_size'] = 2048
     ap_list, dict_ = eval_rankings(params)
-    print 'Accuracy:'
-    print 'Mean:',np.mean(ap_list)
+    print 'Precisió mitjana:',np.mean(ap_list)
 
+"""
     for id in dict_.keys():
         if not id == 'desconegut':
             # We divide by 10 because it's the number of images per class in the validation set.
-            print id+':', dict_[id]/10
+            print id+':', dict_[id]/10 """
